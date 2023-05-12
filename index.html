@@ -68,14 +68,25 @@
         const incrementButton = document.getElementById('increment');
         const decrementButton = document.getElementById('decrement');
 
+        window.addEventListener('load', function() {
+            const storedNumber = localStorage.getItem('storedNumber');
+            if (storedNumber) {
+                numberElement.innerText = storedNumber;
+            }
+        });
+
         incrementButton.addEventListener('click', function() {
             let currentNumber = parseInt(numberElement.innerText);
             numberElement.innerText = currentNumber + 1;
+
+            localStorage.setItem('storedNumber', numberElement.innerText);
         });
 
         decrementButton.addEventListener('click', function() {
             let currentNumber = parseInt(numberElement.innerText);
             numberElement.innerText = currentNumber - 1;
+
+            localStorage.setItem('storedNumber', numberElement.innerText);
         });
     </script>
 </body>
